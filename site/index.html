@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Luna — the AI that runs my life</title>
+  <meta name="description" content="Luna is a personal AI agent connected to my phone, calendar, mail, school and screen time. Built at 16 by directing AI coding agents. Coming soon to GitHub.">
+  <meta name="theme-color" content="#090a0c">
+  <meta name="color-scheme" content="dark">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Luna — the AI that runs my life">
+  <meta property="og:description" content="A personal AI agent that uses my phone, plans my day and blocks TikTok when I should be studying. Built at 16.">
+  <meta property="og:url" content="https://luna.neuralhub.dev/">
+  <meta property="og:image" content="https://luna.neuralhub.dev/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preload" href="fonts/dm-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="top">
+    <a class="brand" href="#top" aria-label="Luna, back to top"><span class="brand__dot" aria-hidden="true"></span>Luna</a>
+    <a class="pill pill--ghost" href="https://github.com/LePro10/luna">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0a8 8 0 0 0-2.53 15.59c.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.05-.49.05-.49.81.06 1.23.83 1.23.83.72 1.23 1.88.87 2.34.67.07-.52.28-.87.5-1.07-1.78-.2-3.65-.89-3.65-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8 8 0 0 0 8 0Z"/></svg>
+      GitHub
+    </a>
+  </header>
+
+  <main id="main">
+    <!-- Hero: the orb is Luna. It thinks and speaks along with the example chat below it. -->
+    <section class="hero" id="top">
+      <div class="hero__light" aria-hidden="true"></div>
+      <div class="orb" aria-hidden="true">
+        <div class="orb__glow" id="orb-glow"></div>
+        <canvas id="orb"></canvas>
+      </div>
+
+      <div class="hero__copy">
+        <p class="eyebrow"><span class="live-dot" aria-hidden="true"></span>Coming soon to GitHub</p>
+        <h1>The AI that<br><span class="soft">runs my life.</span></h1>
+        <p class="lede">I'm Leandro, 16. Luna is my personal AI. She knows my calendar, my school, my mail, and she uses my phone for me. I built her in four months, and I barely typed any of the code: I direct AI agents, and they write it.</p>
+        <div class="actions">
+          <a class="btn btn--primary" href="https://github.com/LePro10/luna">Get notified on GitHub</a>
+          <a class="btn btn--ghost" href="#what">See what she does</a>
+        </div>
+      </div>
+
+      <figure class="chat" aria-label="Example conversation with Luna">
+        <figcaption class="chat__label">Example</figcaption>
+        <div class="chat__log" id="chat" aria-live="off">
+          <noscript>
+            <p class="msg msg--me">Got 30 minutes before training. What can I still do?</p>
+            <p class="msg msg--luna">Training is at 18:00, so you have until 17:35. Your French test is on Thursday and 12 words are still weak. That's one 15-minute set. Start it?</p>
+          </noscript>
+        </div>
+      </figure>
+    </section>
+
+    <!-- Was Luna kann: nur Fähigkeiten, die im NeuralHub-Code existieren. -->
+    <section class="block" id="what">
+      <p class="eyebrow">One agent</p>
+      <h2>Everything I use,<br><span class="soft">connected to one AI.</span></h2>
+      <p class="block__lede">I don't tell Luna where to look. I say what I want, and she finds the context herself: across my calendar, mail, notes, files and school.</p>
+
+      <ul class="grid" role="list">
+        <li class="card" style="--hue: var(--t-ice)">
+          <span class="card__kicker">Phone</span>
+          <h3>She uses my phone for me.</h3>
+          <p>Luna reads the screen, taps, types and opens apps. A stop button stays visible the whole time. Banking apps are blocked.</p>
+        </li>
+        <li class="card" style="--hue: var(--t-lilac)">
+          <span class="card__kicker">Voice</span>
+          <h3>I can call her.</h3>
+          <p>A real call, like with a person. She replaces the phone's built-in assistant: hold the side button and she's there.</p>
+        </li>
+        <li class="card" style="--hue: var(--t-ember)">
+          <span class="card__kicker">Screen time</span>
+          <h3>She blocks TikTok.</h3>
+          <p>App limits, focus blocks and lock times that Luna enforces on my phone, so I actually study instead of scrolling.</p>
+        </li>
+        <li class="card" style="--hue: var(--t-mint)">
+          <span class="card__kicker">School</span>
+          <h3>She gets me ready for tests.</h3>
+          <p>I drop in my notes. She builds short practice sessions around my weak spots and plans them before the test date.</p>
+        </li>
+        <li class="card" style="--hue: var(--t-sand)">
+          <span class="card__kicker">Mail &amp; calendar</span>
+          <h3>She sorts my inbox.</h3>
+          <p>Ads go to the trash, important mail turns into events and tasks. Before anything leaves my account, she asks.</p>
+        </li>
+        <li class="card" style="--hue: var(--t-azure)">
+          <span class="card__kicker">Browser</span>
+          <h3>She works on the web.</h3>
+          <p>Luna has her own Chrome. She researches, fills in forms and clicks through sites while I watch live.</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Zahlen: gemessen am NeuralHub-Repo, Stand 2026-10-11. -->
+    <section class="block stats" aria-label="Numbers">
+      <div class="stat"><span class="stat__n" data-count="140" data-suffix="k+">140k+</span><span class="stat__l">lines of code</span></div>
+      <div class="stat"><span class="stat__n" data-count="88">88</span><span class="stat__l">tools Luna can use</span></div>
+      <div class="stat"><span class="stat__n" data-count="4">4</span><span class="stat__l">months of building</span></div>
+      <div class="stat"><span class="stat__n" data-count="16">16</span><span class="stat__l">years old</span></div>
+    </section>
+
+    <section class="block" id="how">
+      <p class="eyebrow">How it's built</p>
+      <h2>AI agents write the code.<br><span class="soft">I direct them.</span></h2>
+      <ol class="steps" role="list">
+        <li>
+          <span class="steps__n">1</span>
+          <h3>I describe it</h3>
+          <p>What Luna should do, in plain words, and what "done" means.</p>
+        </li>
+        <li>
+          <span class="steps__n">2</span>
+          <h3>Agents build in parallel</h3>
+          <p>Several AI coding sessions at once, each with its own part of the code, so they don't collide.</p>
+        </li>
+        <li>
+          <span class="steps__n">3</span>
+          <h3>An AI tests Luna</h3>
+          <p>A second AI pretends to be me, talks to Luna and checks what she actually did, not what she said.</p>
+        </li>
+        <li>
+          <span class="steps__n">4</span>
+          <h3>Every push goes live</h3>
+          <p>Self-hosted on my own server, with an Android app. A finished change deploys itself.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="block" id="rules">
+      <p class="eyebrow">Ground rules</p>
+      <h2>An AI with access to my life<br><span class="soft">needs rules.</span></h2>
+      <ul class="rules" role="list">
+        <li><strong>Asks before it's irreversible.</strong> Sending mail or messages needs my yes.</li>
+        <li><strong>Everything can be undone.</strong> Changes to my plans, notes and calendar come with undo.</li>
+        <li><strong>Proof before claims.</strong> "Done" only counts once she has checked that it worked.</li>
+        <li><strong>Hands off the dangerous stuff.</strong> No banking, password or 2FA apps.</li>
+      </ul>
+    </section>
+
+    <section class="block cta" id="notify">
+      <div class="cta__light" aria-hidden="true"></div>
+      <h2>Luna is going open source.</h2>
+      <p>Watch the repository and GitHub tells you the moment the code is out.</p>
+      <div class="actions actions--center">
+        <a class="btn btn--primary" href="https://github.com/LePro10/luna">Watch on GitHub</a>
+      </div>
+      <p class="cta__hint">On GitHub: <em>Watch → Custom → Releases</em></p>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span>Built by <a href="https://neuralhub.dev">Leandro Probst</a>, Switzerland</span>
+    <a href="https://github.com/LePro10/luna">github.com/LePro10/luna</a>
+  </footer>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
