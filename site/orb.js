@@ -1,6 +1,7 @@
 /**
  * Luna's particle orb — the same sphere as in the Luna app and the Android
- * assistant, ported from React to plain JS. Fibonacci sphere, coloured by
+ * assistant (dashboard ui/components/ParticleOrb.tsx), ported 1:1 from React
+ * to plain JS: same particle count, same shaders, same moods. Fibonacci sphere, coloured by
  * latitude, drawn as WebGL points; every particle's motion is closed-form,
  * so a frame is a few uniforms and one draw call.
  *
@@ -45,8 +46,8 @@ void main() {
   float persp = 1.0 / (1.0 - z2 / (R * 4.2));
   vec2 px = u_res * 0.5 + vec2(x1, y2) * persp;
   if (u_ptr.z > 0.01) {
-    vec2 dd = px - u_ptr.xy; float d2 = dot(dd, dd); float pr = 90.0 * u_frame.w;
-    if (d2 < pr * pr) px += dd * ((1.0 - d2 / (pr * pr)) * 30.0 * u_frame.w * u_ptr.z / sqrt(d2 + 1.0) * 0.06);
+    vec2 dd = px - u_ptr.xy; float d2 = dot(dd, dd); float pr = 70.0 * u_frame.w;
+    if (d2 < pr * pr) px += dd * ((1.0 - d2 / (pr * pr)) * 26.0 * u_frame.w * u_ptr.z / sqrt(d2 + 1.0) * 0.06);
   }
   float depth = (z2 / R + 1.0) / 2.0;
   float a = clamp(floor((0.12 + depth * 0.88) * 11.0 * (0.75 + 0.25 * sin(t * 2.0 + s * 20.0)) + 0.5), 0.0, 11.0);
@@ -81,7 +82,7 @@ void main() {
  * @param {HTMLElement | null} glow  element whose opacity/scale follows the mood
  * @returns {{ mood(m: 'idle'|'thinking'|'speaking'): void, pulse(v?: number): void } | null}
  */
-export function createOrb(canvas, glow, { density = 1600 } = {}) {
+export function createOrb(canvas, glow, { density = 1400, min = 260, interactive = true } = {}) {
   const gl = canvas.getContext('webgl', { alpha: true, premultipliedAlpha: true, antialias: false, depth: false, stencil: false });
   if (!gl) return null;
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -117,7 +118,7 @@ export function createOrb(canvas, glow, { density = 1600 } = {}) {
     canvas.width = W; canvas.height = H;
     gl.viewport(0, 0, W, H);
     R = Math.min(W, H) * .34;
-    const want = Math.round(Math.min(density, Math.max(320, (R / dpr) ** 2 * .1)));
+    const want = Math.round(Math.min(density, Math.max(min, (R / dpr) ** 2 * .09)));
     if (want === n) return;
     n = want;
     const data = new Float32Array(n * 7);
@@ -178,11 +179,13 @@ export function createOrb(canvas, glow, { density = 1600 } = {}) {
     pointer.x = (e.clientX - r.left) * dpr; pointer.y = (e.clientY - r.top) * dpr;
   };
   const leave = () => { pointer.x = -1e9; pointer.y = -1e9; };
-  canvas.addEventListener('pointermove', move);
-  canvas.addEventListener('pointerdown', move);
-  canvas.addEventListener('pointerleave', leave);
-  canvas.addEventListener('pointerup', leave);
-  canvas.addEventListener('pointercancel', leave);
+  if (interactive) {
+    canvas.addEventListener('pointermove', move);
+    canvas.addEventListener('pointerdown', move);
+    canvas.addEventListener('pointerleave', leave);
+    canvas.addEventListener('pointerup', leave);
+    canvas.addEventListener('pointercancel', leave);
+  }
   request();
 
   return {
